@@ -1,0 +1,47 @@
+What is my disk quota?磁盘配额限制是多少？
+GitHub doesn‘t have any set disk quotas. We try to provide abundant storage for all Git repositories, within reason. Keeping repositories small ensures that our servers are fast and downloads are quick for our users.
+
+Github没有任何磁盘配额限制。我们为Git仓库提供充足的空间，但是仓库足够小可以确保Github服务器的响应和下载速度。
+
+Rule of thumb: 1GB per repository, 100MB per file单个仓库最大1GB，单个文件上限100MB
+For best performance, we recommend repositories be kept under 1GB each. This limit is easy to stay within if large files (typically, binaries) are kept out of the repository. If your repository exceeds 1GB, you might receive a polite email from support requesting that you reduce the size of the repository to bring it back down under 1GB.为了确保优秀的体验，我们提倡单个仓库低于1GB。如果将较大的文件独立出仓库，这个规则不难保持。如果你的仓库超过1GB，你会收到一封邮件提醒你将仓库精简到1GB以下。
+
+In addition, we place a strict limit of files exceeding 100 MB in size. For more information on why this is, see "Working with large files."
+
+另外，单个文件的限制100MB，至于为何如此，请查看https://help.github.com/articles/working-with-large-files/
+
+
+Backups不要试图将GitHub作为备份工具
+Though it sounds like Git would make an amazing backup tool, Git really doesn‘t work out well for backups over the long term. Many solutions that are specifically designed for performing backups are even less expensive than GitHub‘s Micro plan.
+
+Some services worth checking out include Arq, Backblaze, Carbonite, Mozy and CrashPlan.
+
+听起来Git似乎是一个不错的备份工具。Git并不能很好的胜任长期的备份。你有很多其他更好的选择。
+
+Database dumps不推荐使用Git管理数据库文件
+Large SQL files do not play well with version control systems such as Git. If you are looking to provide your developers with the most recent production dataset, we recommend using Dropbox for sharing files like these among your developers.
+
+If you are looking to backup your production servers, see the Backups section above.
+
+较大的SQL数据库文件不能被版本控制工具如Git良好支持。
+
+External dependencies冗余的依赖文件
+Another thing that causes Git repositories to become large and bloated are external dependencies. It‘s best to leave these files out of the repository and use a package manager instead. Most popular languages come with package managers that can do this for you. Bundler, Node‘s Package Manager and Maven. They each support using a Git repository directly as well, so you don‘t need pre-packaged sources.
+
+另外一个导致仓库过大的因素是冗余的依赖文件，最好的解决方案是将这些文件独立出仓库，然后使用管理应用程序包工具进行管理。
+
+Packaged release versions
+Unfortunately, Git isn‘t very good at distributing compiled code and pre-packaged releases. For more information on sharing large files, see "Distributing large binaries."
+
+Large media files
+Binary media files don‘t get along very well with Git. For these files it‘s usually best to use a service specifically designed for what you‘re using.
+
+For large media files like video and music you should host the files yourself or using a service like Vimeo or Youtube.
+
+GitHub supports rendering design files like PSDs and 3D models.
+
+Because these graphic file types can be very large, GitHub‘s designers use a service like Dropbox to stay in sync. Only the final image assets are committed into our repositories.
+
+Changing history of an existing repository
+If you already have a repository that‘s quite large, don‘t fret! You can remove large files from the repository‘s history to reduce its size. Follow the instructions in "Removing sensitive data" to remove the files from the history. After you‘ve done this, make a fresh clone of the repository to test. If the new repository is smaller in disk use than the original repository, you‘ve succeeded.
+
